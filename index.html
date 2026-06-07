@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stephens Tapestry Studio | Handwoven Tapestries Since 1962</title>
+  <meta name="description" content="Three generations of master weavers creating extraordinary handwoven tapestries in collaboration with the world's leading artists. Johannesburg & Eswatini.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+/* ============================================================
+   STEPHENS TAPESTRY STUDIO — COMPLETE DESIGN SYSTEM
+   ============================================================ */
+:root {
+  --black:#050505;--white:#FFFFFF;--blue:#1E5EFF;--blue-accent:#4A7CFF;
+  --blue-dark:#0A1E5A;--blue-glow:rgba(30,94,255,.15);--blue-border:rgba(30,94,255,.3);
+  --gray-50:#FAFAFA;--gray-100:#F5F5F5;--gray-200:#E5E5E5;--gray-300:#D4D4D4;
+  --gray-400:#A3A3A3;--gray-500:#737373;--gray-600:#525252;--gray-700:#404040;
+  --gray-800:#1A1A1A;--gray-900:#0F0F0F;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Jost',system-ui,-apple-system,sans-serif;
+  --text-hero:clamp(52px,8vw,120px);--text-display:clamp(38px,5vw,76px);
+  --text-h1:clamp(30px,4vw,60px);--text-h2:clamp(24px,3vw,46px);
+  --text-h3:clamp(20px,2.2vw,32px);--text-h4:clamp(16px,1.8vw,22px);
+  --text-xl:20px;--text-lg:18px;--text-base:16px;--text-sm:14px;
+  --text-xs:12px;--text-label:11px;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;
+  --space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;
+  --space-20:80px;--space-24:96px;--space-32:128px;--space-40:160px;
+  --ease-luxe:cubic-bezier(0.16,1,0.3,1);--ease-silk:cubic-bezier(0.4,0,0.2,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --transition-fast:150ms var(--ease-silk);--transition-base:300ms var(--ease-silk);
+  --transition-slow:600ms var(--ease-luxe);--transition-luxe:900ms var(--ease-luxe);
+  --transition-reveal:1200ms var(--ease-luxe);
+  --container-max:1440px;--container-wide:1280px;--container-base:1100px;
+  --container-narrow:720px;--gutter:clamp(20px,4vw,80px);
+  --section-padding:clamp(60px,10vw,160px);
+  --radius-sm:2px;--radius-md:4px;--radius-lg:8px;
+  --z-base:1;--z-above:10;--z-modal:100;--z-nav:200;--z-cursor:999;--z-loader:1000;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--font-body);font-weight:300;font-size:var(--text-base);line-height:1.8;color:var(--white);background-color:var(--black);overflow-x:hidden;cursor:none}
+body.is-loading{overflow:hidden}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{background:none;border:none;cursor:none;font-family:inherit}
+::selection{background:var(--blue);color:var(--white)}
+
+/* TYPOGRAPHY */
+.t-hero{font-family:var(--font-display);font-size:var(--text-hero);font-weight:300;line-height:.9;letter-spacing:-.02em}
+.t-display{font-family:var(--font-display);font-size:var(--text-display);font-weight:300;line-height:1;letter-spacing:-.01em}
+.t-h1{font-family:var(--font-display);font-size:var(--text-h1);font-weight:300;line-height:1.05;letter-spacing:-.01em}
+.t-h2{font-family:var(--font-display);font-size:var(--text-h2);font-weight:300;line-height:1.1}
+.t-h3{font-family:var(--font-display);font-size:var(--text-h3);font-weight:300;line-height:1.2}
+.t-h4{font-family:var(--font-display);font-size:var(--text-h4);font-weight:400;line-height:1.3}
+.t-body-lg{font-family:var(--font-display);font-size:var(--text-xl);font-weight:300;font-style:italic;line-height:1.7}
+.t-body{font-family:var(--font-body);font-size:var(--text-base);font-weight:300;line-height:1.8}
+.t-caption{font-family:var(--font-body);font-size:var(--text-sm);font-weight:300;line-height:1.6;color:var(--gray-400)}
+.t-label{font-family:var(--font-body);font-size:var(--text-label);font-weight:400;letter-spacing:.25em;text-transform:uppercase}
+.t-italic{font-style:italic}.t-blue{color:var(--blue-accent)}.t-gray{color:var(--gray-400)}
+
+/* LAYOUT */
+.container{width:100%;max-width:var(--container-base);margin-inline:auto;padding-inline:var(--gutter)}
+.container--wide{max-width:var(--container-wide)}
+.container--full{max-width:var(--container-max)}
+.container--narrow{max-width:var(--container-narrow)}
+.section{padding-block:var(--section-padding)}
+.section--sm{padding-block:clamp(40px,6vw,100px)}
+
+/* CURSOR */
+.cursor{position:fixed;top:0;left:0;pointer-events:none;z-index:var(--z-cursor);mix-blend-mode:difference}
+.cursor__dot{position:absolute;width:8px;height:8px;background:var(--white);border-radius:50%;transform:translate(-50%,-50%);transition:transform 100ms var(--ease-silk),opacity 300ms var(--ease-silk)}
+.cursor__ring{position:absolute;width:40px;height:40px;border:1px solid rgba(255,255,255,.6);border-radius:50%;transform:translate(-50%,-50%);transition:transform 600ms var(--ease-luxe),width 300ms var(--ease-luxe),height 300ms var(--ease-luxe),opacity 300ms var(--ease-silk),border-color 300ms var(--ease-silk)}
+.cursor--hover .cursor__ring{width:64px;height:64px;border-color:var(--blue-accent)}
+.cursor--hover .cursor__dot{transform:translate(-50%,-50%) scale(0)}
+
+/* LOADER */
+.loader{position:fixed;inset:0;z-index:var(--z-loader);background:var(--black);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:var(--space-8);transition:opacity 800ms var(--ease-luxe),visibility 800ms var(--ease-luxe)}
+.loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader__logo{font-family:var(--font-display);font-size:28px;font-weight:300;letter-spacing:.1em;color:var(--white);opacity:0;animation:loaderFade 600ms var(--ease-luxe) 200ms forwards}
+.loader__line{width:200px;height:1px;background:var(--gray-800);position:relative;overflow:hidden}
+.loader__line::after{content:'';position:absolute;inset:0;background:var(--blue);transform:translateX(-100%);animation:loaderProgress 1800ms var(--ease-luxe) forwards}
+.loader__count{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.3em;color:var(--gray-500);opacity:0;animation:loaderFade 600ms var(--ease-luxe) 400ms forwards}
+@keyframes loaderProgress{to{transform:translateX(0)}}
+@keyframes loaderFade{to{opacity:1}}
+
+/* ANNOUNCEMENT BAR */
+.announcement-bar{background:var(--blue-dark);text-align:center;padding:var(--space-3) var(--gutter);font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+/* NAVIGATION */
+.nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);padding-block:var(--space-6);transition:padding var(--transition-base),background var(--transition-base)}
+.nav.is-scrolled{padding-block:var(--space-4);background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--gutter)}
+.nav__logo{font-family:var(--font-display);font-size:18px;font-weight:400;letter-spacing:.05em;color:var(--white);transition:opacity var(--transition-base)}
+.nav__logo:hover{opacity:.7}
+.nav__logo-sub{display:block;font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.3em;text-transform:uppercase;font-weight:400;color:var(--gray-400);margin-top:2px}
+.nav__links{display:flex;align-items:center;gap:var(--space-10)}
+.nav__link{font-family:var(--font-body);font-size:var(--text-label);font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-300);position:relative;transition:color var(--transition-base)}
+.nav__link::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform 400ms var(--ease-luxe)}
+.nav__link:hover{color:var(--white)}
+.nav__link:hover::after{transform:scaleX(1);transform-origin:left}
+.nav__cta{font-family:var(--font-body);font-size:var(--text-label);font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.2);padding:var(--space-3) var(--space-6);transition:border-color var(--transition-base),background var(--transition-base)}
+.nav__cta:hover{background:var(--blue);border-color:var(--blue)}
+.nav__hamburger{display:none;flex-direction:column;gap:5px;width:28px;cursor:none}
+.nav__hamburger-line{height:1px;background:var(--white);transition:transform var(--transition-base),opacity var(--transition-base)}
+.nav-mobile{position:fixed;inset:0;z-index:calc(var(--z-nav) - 1);background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:var(--gutter);clip-path:circle(0% at calc(100% - 40px) 40px);transition:clip-path 800ms var(--ease-luxe);pointer-events:none}
+.nav-mobile.is-open{clip-path:circle(150% at calc(100% - 40px) 40px);pointer-events:all}
+.nav-mobile__links{display:flex;flex-direction:column;gap:var(--space-6)}
+.nav-mobile__link{font-family:var(--font-display);font-size:clamp(36px,6vw,70px);font-weight:300;color:var(--white);transform:translateY(20px);opacity:0;transition:transform 600ms var(--ease-luxe),opacity 600ms var(--ease-luxe),color var(--transition-base)}
+.nav-mobile.is-open .nav-mobile__link{transform:translateY(0);opacity:1}
+.nav-mobile__link:nth-child(1){transition-delay:100ms}.nav-mobile__link:nth-child(2){transition-delay:150ms}
+.nav-mobile__link:nth-child(3){transition-delay:200ms}.nav-mobile__link:nth-child(4){transition-delay:250ms}
+.nav-mobile__link:nth-child(5){transition-delay:300ms}.nav-mobile__link:nth-child(6){transition-delay:350ms}
+.nav-mobile__link:hover{color:var(--blue-accent)}
+
+/* HERO */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;background:var(--black)}
+.hero__media{position:absolute;inset:0;z-index:0}
+.hero__video,.hero__image{width:100%;height:100%;object-fit:cover}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.2) 0%,rgba(5,5,5,.1) 40%,rgba(5,5,5,.85) 100%);z-index:1}
+.hero__placeholder{position:absolute;inset:0;background:linear-gradient(135deg,var(--gray-900) 0%,var(--black) 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero__particles{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero__content{position:relative;z-index:2;width:100%;max-width:var(--container-max);margin-inline:auto;padding:var(--space-40) var(--gutter)}
+.hero__eyebrow{font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.35em;text-transform:uppercase;color:var(--blue-accent);margin-bottom:var(--space-6);opacity:0;transform:translateY(20px);animation:revealUp 800ms var(--ease-luxe) 2000ms forwards}
+.hero__title{font-family:var(--font-display);font-size:var(--text-hero);font-weight:300;line-height:.92;letter-spacing:-.02em;color:var(--white);max-width:12ch;overflow:hidden}
+.hero__title-line{display:block;overflow:hidden}
+.hero__title-inner{display:block;transform:translateY(110%);animation:revealTitle 1000ms var(--ease-luxe) forwards}
+.hero__title-line:nth-child(1) .hero__title-inner{animation-delay:2100ms}
+.hero__title-line:nth-child(2) .hero__title-inner{animation-delay:2200ms}
+.hero__title-line:nth-child(3) .hero__title-inner{animation-delay:2300ms}
+.hero__subtitle{font-family:var(--font-body);font-size:var(--text-base);font-weight:300;letter-spacing:.1em;color:var(--gray-300);margin-top:var(--space-8);max-width:480px;opacity:0;transform:translateY(20px);animation:revealUp 800ms var(--ease-luxe) 2500ms forwards}
+.hero__actions{display:flex;align-items:center;gap:var(--space-6);margin-top:var(--space-10);opacity:0;transform:translateY(20px);animation:revealUp 800ms var(--ease-luxe) 2700ms forwards}
+.hero__scroll{position:absolute;bottom:var(--space-10);right:var(--gutter);z-index:2;display:flex;flex-direction:column;align-items:center;gap:var(--space-3);opacity:0;animation:revealUp 800ms var(--ease-luxe) 3000ms forwards}
+.hero__scroll-label{font-family:var(--font-body);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gray-500);writing-mode:vertical-rl;transform:rotate(180deg)}
+.hero__scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--gray-600),transparent);position:relative;overflow:hidden}
+.hero__scroll-line::after{content:'';position:absolute;top:-100%;left:0;right:0;bottom:0;background:var(--blue);animation:scrollPulse 2s ease infinite}
+.hero__year{position:absolute;bottom:var(--space-10);left:var(--gutter);z-index:2;font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.3em;color:var(--gray-600);opacity:0;animation:revealUp 800ms var(--ease-luxe) 3000ms forwards}
+@keyframes scrollPulse{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:var(--space-3);font-family:var(--font-body);font-size:var(--text-label);font-weight:400;letter-spacing:.2em;text-transform:uppercase;cursor:none;position:relative;overflow:hidden;transition:color var(--transition-base)}
+.btn--primary{color:var(--black);background:var(--white);padding:var(--space-4) var(--space-8)}
+.btn--primary::before{content:'';position:absolute;inset:0;background:var(--blue);transform:translateX(-101%);transition:transform 500ms var(--ease-luxe)}
+.btn--primary:hover{color:var(--white)}
+.btn--primary:hover::before{transform:translateX(0)}
+.btn--secondary{color:var(--white);border:1px solid rgba(255,255,255,.3);padding:var(--space-4) var(--space-8);transition:border-color var(--transition-base),color var(--transition-base)}
+.btn--secondary:hover{border-color:var(--blue);color:var(--blue-accent)}
+.btn--blue{color:var(--white);background:var(--blue);padding:var(--space-4) var(--space-8)}
+.btn--blue::before{content:'';position:absolute;inset:0;background:var(--blue-accent);transform:translateX(-101%);transition:transform 500ms var(--ease-luxe)}
+.btn--blue:hover::before{transform:translateX(0)}
+.btn-magnetic{position:relative;display:inline-block}
+
+/* MARQUEE */
+.marquee-strip{background:var(--black);border-top:1px solid var(--gray-800);border-bottom:1px solid var(--gray-800);padding-block:var(--space-5);overflow:hidden}
+.marquee{overflow:hidden;white-space:nowrap}
+.marquee__track{display:inline-flex;animation:marqueeLeft 22s linear infinite}
+.marquee__item{padding-inline:var(--space-8);font-family:var(--font-display);font-size:clamp(36px,4.5vw,72px);font-weight:300;font-style:italic;color:var(--gray-800);white-space:nowrap}
+.marquee__separator{color:var(--blue);margin-inline:var(--space-4)}
+@keyframes marqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HERITAGE */
+.heritage{background:var(--white);color:var(--black);overflow:hidden}
+.heritage__inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,120px);align-items:center}
+.heritage__media{position:relative;aspect-ratio:3/4;overflow:hidden}
+.heritage__placeholder{width:100%;height:100%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;font-size:var(--text-label);letter-spacing:.3em;text-transform:uppercase;color:var(--gray-400)}
+.heritage__content{padding-block:var(--space-16)}
+.heritage__eyebrow{font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.3em;text-transform:uppercase;color:var(--blue);margin-bottom:var(--space-6)}
+.heritage__title{font-family:var(--font-display);font-size:clamp(36px,4vw,64px);font-weight:300;line-height:1.05;color:var(--black);margin-bottom:var(--space-8)}
+.heritage__body{font-family:var(--font-body);font-size:var(--text-base);font-weight:300;line-height:1.9;color:var(--gray-600);max-width:520px;margin-bottom:var(--space-10)}
+.heritage__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);padding-top:var(--space-10);border-top:1px solid var(--gray-200)}
+.heritage__stat-number{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--black);line-height:1}
+.heritage__stat-label{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--gray-400);margin-top:var(--space-2)}
+
+/* QUOTE STRIP */
+.quote-strip{background:var(--blue-dark);padding-block:var(--space-20);overflow:hidden}
+.quote-strip__inner{max-width:var(--container-narrow);margin-inline:auto;text-align:center}
+.quote-strip__mark{font-family:var(--font-display);font-size:120px;font-weight:300;color:var(--blue-border);line-height:.5;margin-bottom:var(--space-8)}
+.quote-strip__text{font-family:var(--font-display);font-size:clamp(22px,3vw,38px);font-weight:300;font-style:italic;color:var(--white);line-height:1.5;margin-bottom:var(--space-8)}
+.quote-strip__attribution{font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.3em;text-transform:uppercase;color:var(--blue-accent)}
+
+/* ARTISTS */
+.artists-section{background:var(--black);overflow:hidden}
+.artists-section__header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(40px,6vw,80px);gap:var(--space-8)}
+.artists-section__title{font-family:var(--font-display);font-size:clamp(36px,5vw,72px);font-weight:300;line-height:1;color:var(--white)}
+.artists-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray-800)}
+.artist-card{background:var(--black);position:relative;overflow:hidden;cursor:none;display:block}
+.artist-card__media{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--gray-900)}
+.artist-card__img{width:100%;height:100%;object-fit:cover;transition:transform 800ms var(--ease-luxe),filter 800ms var(--ease-luxe);filter:grayscale(20%)}
+.artist-card:hover .artist-card__img{transform:scale(1.06);filter:grayscale(0%)}
+.artist-card__placeholder{width:100%;height:100%;background:var(--gray-900);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-3);font-size:var(--text-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gray-700)}
+.artist-card__placeholder-initial{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);font-weight:300;color:var(--gray-700);line-height:1}
+.artist-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.9) 0%,rgba(5,5,5,.2) 50%,transparent 100%);transition:opacity var(--transition-slow)}
+.artist-card__blue-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform 500ms var(--ease-luxe)}
+.artist-card:hover .artist-card__blue-line{transform:scaleX(1)}
+.artist-card__info{position:absolute;bottom:0;left:0;right:0;padding:var(--space-6)}
+.artist-card__name{font-family:var(--font-display);font-size:clamp(18px,1.8vw,24px);font-weight:300;color:var(--white);line-height:1.2}
+.artist-card__meta{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--blue-accent);margin-top:var(--space-2);opacity:0;transform:translateY(10px);transition:opacity var(--transition-slow),transform var(--transition-slow)}
+.artist-card:hover .artist-card__meta{opacity:1;transform:translateY(0)}
+
+/* TAPESTRIES MASONRY */
+.tapestries-section{background:var(--gray-900);overflow:hidden}
+.tapestries-section__header{margin-bottom:clamp(40px,6vw,80px)}
+.tapestries-masonry{columns:3;column-gap:var(--space-4)}
+.tapestry-card{break-inside:avoid;margin-bottom:var(--space-4);position:relative;overflow:hidden;cursor:none;display:block}
+.tapestry-card__media{width:100%;overflow:hidden;background:var(--gray-800);position:relative}
+.tapestry-card__placeholder{background:var(--gray-800);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gray-700)}
+.tapestry-card__info{position:absolute;bottom:0;left:0;right:0;padding:var(--space-6);background:linear-gradient(to top,rgba(5,5,5,.95) 0%,transparent 100%);transform:translateY(8px);opacity:0;transition:transform 400ms var(--ease-luxe),opacity 400ms var(--ease-luxe)}
+.tapestry-card:hover .tapestry-card__info{transform:translateY(0);opacity:1}
+.tapestry-card__title{font-family:var(--font-display);font-size:var(--text-h4);font-weight:300;color:var(--white)}
+.tapestry-card__artist{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.25em;text-transform:uppercase;color:var(--blue-accent);margin-top:var(--space-2)}
+.tapestry-card__border{position:absolute;inset:0;border:1px solid transparent;transition:border-color 400ms var(--ease-luxe);pointer-events:none}
+.tapestry-card:hover .tapestry-card__border{border-color:var(--blue-border)}
+
+/* CRAFTSMANSHIP */
+.craft-section{background:var(--white);color:var(--black);overflow:hidden}
+.craft-section__intro{text-align:center;max-width:700px;margin-inline:auto;margin-bottom:var(--space-24)}
+.craft-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--gray-200);margin-bottom:var(--space-24)}
+.craft-step{background:var(--white);padding:var(--space-8) var(--space-6);position:relative;overflow:hidden;transition:background var(--transition-slow)}
+.craft-step::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform 500ms var(--ease-luxe)}
+.craft-step:hover{background:var(--gray-50)}
+.craft-step:hover::after{transform:scaleX(1)}
+.craft-step__number{font-family:var(--font-display);font-size:clamp(48px,6vw,80px);font-weight:300;color:var(--gray-200);line-height:1;margin-bottom:var(--space-6)}
+.craft-step__title{font-family:var(--font-display);font-size:var(--text-h4);font-weight:400;color:var(--black);margin-bottom:var(--space-4)}
+.craft-step__body{font-family:var(--font-body);font-size:var(--text-sm);color:var(--gray-500);line-height:1.7}
+
+/* CONTACT CTA */
+.contact-cta{background:var(--black);text-align:center;overflow:hidden}
+.contact-cta__eyebrow{font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.35em;text-transform:uppercase;color:var(--blue-accent);margin-bottom:var(--space-6)}
+.contact-cta__title{font-family:var(--font-display);font-size:clamp(48px,6vw,96px);font-weight:300;line-height:.95;color:var(--white);margin-bottom:var(--space-10)}
+.contact-cta__actions{display:flex;align-items:center;justify-content:center;gap:var(--space-6);flex-wrap:wrap}
+.contact-cta__details{margin-top:var(--space-16);display:flex;justify-content:center;gap:var(--space-16);flex-wrap:wrap}
+.contact-cta__detail-label{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gray-600);margin-bottom:var(--space-2)}
+.contact-cta__detail-value{font-family:var(--font-display);font-size:var(--text-h4);font-weight:300;color:var(--gray-300)}
+
+/* VIDEO SECTION */
+.hf-video-section{position:relative;overflow:hidden}
+.hf-video-wrapper{position:relative;width:100%;aspect-ratio:16/9;background:var(--black);overflow:hidden}
+.hf-video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);background:var(--gray-900)}
+.hf-video-placeholder__label{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gray-700)}
+.hf-video-overlay-text{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--gutter)}
+
+/* FOOTER */
+.footer{background:var(--gray-900);border-top:1px solid var(--gray-800);padding-block:var(--space-16)}
+.footer__inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-10);margin-bottom:var(--space-16)}
+.footer__brand{max-width:280px}
+.footer__logo{font-family:var(--font-display);font-size:22px;font-weight:300;letter-spacing:.05em;color:var(--white);margin-bottom:var(--space-4)}
+.footer__tagline{font-family:var(--font-body);font-size:var(--text-sm);font-weight:300;color:var(--gray-500);line-height:1.8;margin-bottom:var(--space-6)}
+.footer__heading{font-family:var(--font-body);font-size:var(--text-xs);letter-spacing:.3em;text-transform:uppercase;color:var(--gray-600);margin-bottom:var(--space-5)}
+.footer__links{display:flex;flex-direction:column;gap:var(--space-3)}
+.footer__link{font-family:var(--font-body);font-size:var(--text-sm);font-weight:300;color:var(--gray-400);transition:color var(--transition-base)}
+.footer__link:hover{color:var(--white)}
+.footer__social{display:flex;gap:var(--space-4);margin-top:var(--space-6)}
+.footer__social-link{width:36px;height:36px;border:1px solid var(--gray-700);display:flex;align-items:center;justify-content:center;transition:border-color var(--transition-base),background var(--transition-base)}
+.footer__social-link:hover{border-color:var(--blue);background:var(--blue-glow)}
+.footer__social-link svg{width:14px;height:14px;fill:var(--gray-400);transition:fill var(--transition-base)}
+.footer__social-link:hover svg{fill:var(--blue-accent)}
+.footer__bottom{display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-8);border-top:1px solid var(--gray-800);gap:var(--space-6);flex-wrap:wrap}
+.footer__legal{font-family:var(--font-body);font-size:var(--text-xs);color:var(--gray-700)}
+
+/* REVEALS */
+[data-reveal]{opacity:0;transition:opacity var(--transition-reveal),transform var(--transition-reveal)}
+[data-reveal="up"]{transform:translateY(50px)}
+[data-reveal="left"]{transform:translateX(-50px)}
+[data-reveal="right"]{transform:translateX(50px)}
+[data-reveal="scale"]{transform:scale(.95)}
+[data-reveal="fade"]{transform:none}
+[data-reveal].is-visible{opacity:1;transform:none}
+[data-reveal-delay="1"]{transition-delay:100ms}
+[data-reveal-delay="2"]{transition-delay:200ms}
+[data-reveal-delay="3"]{transition-delay:300ms}
+[data-reveal-delay="4"]{transition-delay:400ms}
+[data-reveal-delay="5"]{transition-delay:500ms}
+.reveal-img{overflow:hidden;position:relative}
+.reveal-img::after{content:'';position:absolute;inset:0;background:var(--black);transform:scaleX(1);transform-origin:right;transition:transform 1000ms var(--ease-luxe)}
+.reveal-img.is-visible::after{transform:scaleX(0)}
+.reveal-img img{transform:scale(1.1);transition:transform 1200ms var(--ease-luxe)}
+.reveal-img.is-visible img{transform:scale(1)}
+.stagger-children>*{opacity:0;transform:translateY(30px);transition:opacity 700ms var(--ease-luxe),transform 700ms var(--ease-luxe)}
+.stagger-children.is-visible>*{opacity:1;transform:translateY(0)}
+.stagger-children.is-visible>*:nth-child(1){transition-delay:0ms}
+.stagger-children.is-visible>*:nth-child(2){transition-delay:80ms}
+.stagger-children.is-visible>*:nth-child(3){transition-delay:160ms}
+.stagger-children.is-visible>*:nth-child(4){transition-delay:240ms}
+.stagger-children.is-visible>*:nth-child(5){transition-delay:320ms}
+.stagger-children.is-visible>*:nth-child(6){transition-delay:400ms}
+.stagger-children.is-visible>*:nth-child(7){transition-delay:480ms}
+.stagger-children.is-visible>*:nth-child(8){transition-delay:560ms}
+
+/* KEYFRAMES */
+@keyframes revealUp{to{opacity:1;transform:translateY(0)}}
+@keyframes revealTitle{to{transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* UTILITIES */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.skip-link{position:absolute;top:-60px;left:var(--space-6);background:var(--blue);color:var(--white);padding:var(--space-3) var(--space-6);font-family:var(--font-body);font-size:var(--text-sm);z-index:calc(var(--z-loader)+1)}
+.skip-link:focus{top:var(--space-6)}
+.text-center{text-align:center}
+.page-transition{position:fixed;inset:0;background:var(--black);z-index:calc(var(--z-loader) - 1);transform:translateY(100%);transition:transform 600ms var(--ease-luxe)}
+.page-transition.is-active{transform:translateY(0)}
+.section-eyebrow{font-family:var(--font-body);font-size:var(--text-label);letter-spacing:.35em;text-transform:uppercase;color:var(--blue-accent);margin-bottom:var(--space-6)}
+.section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,72px);font-weight:300;line-height:1;color:var(--white)}
+.section-title--dark{color:var(--black)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .artists-grid{grid-template-columns:repeat(2,1fr)}
+  .tapestries-masonry{columns:2}
+  .craft-steps{grid-template-columns:repeat(3,1fr)}
+  .heritage__inner{grid-template-columns:1fr}
+  .heritage__media{aspect-ratio:16/9}
+  .footer__inner{grid-template-columns:1fr 1fr;gap:var(--space-8)}
+}
+@media(max-width:768px){
+  :root{--section-padding:clamp(48px,8vw,80px);--gutter:20px}
+  body{cursor:auto}
+  .cursor{display:none}
+  .nav__links,.nav__cta{display:none}
+  .nav__hamburger{display:flex}
+  .artists-grid{grid-template-columns:repeat(2,1fr)}
+  .tapestries-masonry{columns:1}
+  .craft-steps{grid-template-columns:1fr 1fr}
+  .footer__inner{grid-template-columns:1fr}
+  .heritage__stats{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:480px){
+  .craft-steps{grid-template-columns:1fr}
+  .hero__actions{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .hero__title-inner{transform:none!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+  .reveal-img::after{display:none!important}
+  .marquee__track{animation:none!important}
+}
+  </style>
+</head>
+<body class="is-loading">
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- Page Loader -->
+  <div class="loader" role="status" aria-label="Loading">
+    <div class="loader__logo">Stephens Tapestry Studio</div>
+    <div class="loader__line"></div>
+    <div class="loader__count">0%</div>
+  </div>
+
+  <!-- Page Transition -->
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" role="banner">
+    Handwoven Eastern Cape Mohair · Est. 1962 · Johannesburg &amp; Eswatini
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Stephens Tapestry Studio — Home">
+        Stephens Tapestry Studio
+        <span class="nav__logo-sub">Est. 1962</span>
+      </a>
+      <div class="nav__links" role="list">
+        <a href="/pages/our-story"     class="nav__link" role="listitem">Our Story</a>
+        <a href="/pages/artists"       class="nav__link" role="listitem">Artists</a>
+        <a href="/collections/all"     class="nav__link" role="listitem">Tapestries</a>
+        <a href="/pages/craftsmanship" class="nav__link" role="listitem">Craftsmanship</a>
+        <a href="/pages/exhibitions"   class="nav__link" role="listitem">Exhibitions</a>
+      </div>
+      <a href="/pages/contact" class="nav__cta">Enquire</a>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line" style="width:18px"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <nav class="nav-mobile" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="nav-mobile__links">
+      <a href="/pages/our-story"     class="nav-mobile__link">Our Story</a>
+      <a href="/pages/artists"       class="nav-mobile__link">Artists</a>
+      <a href="/collections/all"     class="nav-mobile__link">Tapestries</a>
+      <a href="/pages/craftsmanship" class="nav-mobile__link">Craftsmanship</a>
+      <a href="/pages/exhibitions"   class="nav-mobile__link">Exhibitions</a>
+      <a href="/pages/contact"       class="nav-mobile__link">Enquire</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-label="Homepage hero">
+      <div class="hero__media" aria-hidden="true">
+        <div class="hero__placeholder">
+          <canvas class="hero__particles" aria-hidden="true"></canvas>
+          <!-- Replace with Higgsfield PROMPT 001 video:
+               <video class="hero__video" autoplay muted loop playsinline src="YOUR_VIDEO_URL.mp4"></video> -->
+        </div>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content container--full">
+        <p class="hero__eyebrow">Est. 1962 — Johannesburg &amp; Eswatini</p>
+        <h1 class="hero__title">
+          <span class="hero__title-line"><span class="hero__title-inner">Where Art</span></span>
+          <span class="hero__title-line"><span class="hero__title-inner">Becomes</span></span>
+          <span class="hero__title-line"><span class="hero__title-inner">Thread.</span></span>
+        </h1>
+        <p class="hero__subtitle">Three generations of master weavers. Extraordinary collaborations. Eastern Cape mohair.</p>
+        <div class="hero__actions">
+          <div class="btn-magnetic">
+            <a href="/collections/all" class="btn btn--primary">View Tapestries</a>
+          </div>
+          <a href="/pages/our-story" class="btn btn--secondary">Our Heritage</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-label">Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+      <div class="hero__year" aria-hidden="true">Est. 1962</div>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee__track">
+          <span class="marquee__item">Handwoven Mohair</span>
+          <span class="marquee__separator">·</span>
+          <span class="marquee__item">Est. 1962</span>
+          <span class="marquee__separator">·</span>
+          <span class="marquee__item">Johannesburg &amp; Eswatini</span>
+          <span class="marquee__separator">·</span>
+          <span class="marquee__item">Eastern Cape Mohair</span>
+          <span class="marquee__separator">·</span>
+          <!-- duplicate for seamless loop -->
+          <span class="marquee__item">Handwoven Mohair</span>
+          <span class="marquee__separator">·</span>
+          <span class="marquee__item">Est. 1962</span>
+          <span class="marquee__separator">·</span>
+          <span class="marquee__item">Johannesburg &amp; Eswatini</span>
+          <span class="marquee__separator">·</span>
+          <span class="marquee__item">Eastern Cape Mohair</span>
+          <span class="marquee__separator">·</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== HERITAGE STORY ===================== -->
+    <section class="heritage section" aria-labelledby="heritage-title">
+      <div class="container container--wide">
+        <div class="heritage__inner">
+          <div class="reveal-img" data-parallax="0.15">
+            <div class="heritage__placeholder" style="aspect-ratio:3/4">
+              [ UPLOAD STUDIO IMAGE ]
+            </div>
+          </div>
+          <div class="heritage__content" data-reveal="up">
+            <p class="heritage__eyebrow">Our Heritage</p>
+            <h2 class="heritage__title" id="heritage-title">Three Generations<br>of Weaving Heritage</h2>
+            <p class="heritage__body">
+              Founded in the late 1940s by Coral Stephens and master weaver Sylvia Mantanga in Eswatini,
+              Stephens Tapestry Studio has grown from a single gift loom into one of the world's most
+              significant handwoven tapestry institutions. Today, under Christine Weavind's direction,
+              30 women weavers across Johannesburg and Eswatini continue a tradition of extraordinary
+              collaboration with the world's leading artists.
+            </p>
+            <a href="/pages/our-story" class="btn btn--primary">Discover Our Story</a>
+            <div class="heritage__stats">
+              <div>
+                <div class="heritage__stat-number count-up" data-count="60" data-suffix="+">60+</div>
+                <div class="heritage__stat-label">Years of Heritage</div>
+              </div>
+              <div>
+                <div class="heritage__stat-number count-up" data-count="30">30</div>
+                <div class="heritage__stat-label">Women Weavers</div>
+              </div>
+              <div>
+                <div class="heritage__stat-number count-up" data-count="15">15</div>
+                <div class="heritage__stat-label">Collaborating Artists</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== QUOTE STRIP ===================== -->
+    <section class="quote-strip" aria-label="Studio quote">
+      <div class="quote-strip__inner container" data-reveal="fade">
+        <div class="quote-strip__mark" aria-hidden="true">"</div>
+        <blockquote class="quote-strip__text">
+          The tapestry does not merely reproduce the drawing. It transforms it — the mohair catches light in ways charcoal never can.
+        </blockquote>
+        <cite class="quote-strip__attribution">Christine Weavind, Studio Director</cite>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED ARTISTS ===================== -->
+    <section class="artists-section section" aria-labelledby="artists-title">
+      <div class="container container--wide">
+        <div class="artists-section__header">
+          <div>
+            <p class="section-eyebrow" data-reveal="up">In Collaboration With</p>
+            <h2 class="artists-section__title" id="artists-title" data-reveal="up" data-reveal-delay="1">The Artists</h2>
+          </div>
+          <a href="/pages/artists" class="btn btn--secondary" data-reveal="up" data-reveal-delay="2">View All Artists</a>
+        </div>
+
+        <div class="artists-grid stagger-children">
+
+          <a href="kentridge.html" class="artist-card" data-category="south-africa" data-name="william kentridge">
+            <div class="artist-card__media">
+              <img src="artist-kentridge.jpg" alt="William Kentridge tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">William Kentridge</h3>
+              <p class="artist-card__meta">40 works</p>
+            </div>
+          </a>
+
+          <a href="mason.html" class="artist-card" data-category="south-africa" data-name="judith mason">
+            <div class="artist-card__media">
+              <img src="artist-mason.jpg" alt="Judith Mason tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Judith Mason</h3>
+              <p class="artist-card__meta">14 works</p>
+            </div>
+          </a>
+
+          <a href="/pages/walter-battiss" class="artist-card" data-category="south-africa" data-name="walter battiss">
+            <div class="artist-card__media">
+              <img src="artist-battiss.jpg" alt="Walter Battiss tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Walter Battiss</h3>
+              <p class="artist-card__meta">12 works</p>
+            </div>
+          </a>
+
+          <a href="/pages/sam-nhlengethwa" class="artist-card" data-category="south-africa" data-name="sam nhlengethwa">
+            <div class="artist-card__media">
+              <img src="artist-nhlengethwa.jpg" alt="Sam Nhlengethwa tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Sam Nhlengethwa</h3>
+              <p class="artist-card__meta">12 works</p>
+            </div>
+          </a>
+
+          <a href="/pages/robert-hodgins" class="artist-card" data-category="south-africa" data-name="robert hodgins">
+            <div class="artist-card__media">
+              <img src="artist-hodgins.jpg" alt="Robert Hodgins tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Robert Hodgins</h3>
+              <p class="artist-card__meta">6 works</p>
+            </div>
+          </a>
+
+          <a href="/pages/norman-catherine" class="artist-card" data-category="south-africa" data-name="norman catherine">
+            <div class="artist-card__media">
+              <img src="artist-catherine.jpg" alt="Norman Catherine tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Norman Catherine</h3>
+              <p class="artist-card__meta">7 works</p>
+            </div>
+          </a>
+
+          <a href="/pages/misha-kahn" class="artist-card" data-category="international" data-name="misha kahn">
+            <div class="artist-card__media">
+              <img src="artist-khan.jpg" alt="Misha Kahn tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Misha Kahn</h3>
+              <p class="artist-card__meta">7 works</p>
+            </div>
+          </a>
+
+          <a href="/pages/graeme-black" class="artist-card" data-category="south-africa" data-name="graeme black">
+            <div class="artist-card__media">
+              <img src="artist-black.jpg" alt="Graeme Black tapestry — handwoven mohair" class="artist-card__img" loading="lazy">
+              <div class="artist-card__overlay" aria-hidden="true"></div>
+              <div class="artist-card__blue-line" aria-hidden="true"></div>
+            </div>
+            <div class="artist-card__info">
+              <h3 class="artist-card__name">Graeme Black</h3>
+              <p class="artist-card__meta">5 works</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED TAPESTRIES ===================== -->
+    <section class="tapestries-section section" aria-labelledby="tapestries-title">
+      <div class="container container--wide">
+        <div class="tapestries-section__header" data-reveal="up">
+          <p class="section-eyebrow">The Collection</p>
+          <h2 style="font-family:var(--font-display);font-size:clamp(36px,5vw,72px);font-weight:300;color:var(--white)" id="tapestries-title">Featured Tapestries</h2>
+        </div>
+
+        <div class="tapestries-masonry">
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:2/3;min-height:320px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">The Porter Series</div>
+              <div class="tapestry-card__artist">William Kentridge</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:3/4;min-height:260px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Winged Angels</div>
+              <div class="tapestry-card__artist">Judith Mason</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:4/3;min-height:240px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Kippies</div>
+              <div class="tapestry-card__artist">Sam Nhlengethwa</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:3/4;min-height:300px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Walking Feathers</div>
+              <div class="tapestry-card__artist">Walter Battiss</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:2/3;min-height:280px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Triumph &amp; Laments</div>
+              <div class="tapestry-card__artist">William Kentridge</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:4/3;min-height:220px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Space Time Carpet</div>
+              <div class="tapestry-card__artist">Misha Kahn</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:3/4;min-height:290px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Queen of Spades</div>
+              <div class="tapestry-card__artist">Robert Hodgins</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:1/1;min-height:240px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Social Club</div>
+              <div class="tapestry-card__artist">Norman Catherine</div>
+            </div>
+          </a>
+
+          <a href="/collections/all" class="tapestry-card">
+            <div class="tapestry-card__media">
+              <div class="tapestry-card__placeholder" style="aspect-ratio:2/3;min-height:260px">[ UPLOAD TAPESTRY IMAGE ]</div>
+            </div>
+            <div class="tapestry-card__border"></div>
+            <div class="tapestry-card__info">
+              <div class="tapestry-card__title">Wolf in Drisk</div>
+              <div class="tapestry-card__artist">Polly Jean Harvey</div>
+            </div>
+          </a>
+
+        </div>
+
+        <div style="text-align:center;margin-top:var(--space-16)" data-reveal="up">
+          <a href="/collections/all" class="btn btn--secondary">View All Tapestries</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HIGGSFIELD VIDEO ===================== -->
+    <section class="hf-video-section section--sm" aria-label="Studio film" style="background:var(--black)">
+      <div class="container container--wide" style="text-align:center;margin-bottom:var(--space-10)" data-reveal="up">
+        <p class="section-eyebrow">The Making</p>
+        <h2 style="font-family:var(--font-display);font-size:clamp(36px,5vw,72px);font-weight:300;color:var(--white)">Thread by Thread</h2>
+      </div>
+      <div class="hf-video-wrapper">
+        <!-- Replace with Higgsfield PROMPT 005 — The Translation -->
+        <div class="hf-video-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" stroke="#404040"/>
+            <path d="M19 16l14 8-14 8V16z" fill="#4A7CFF"/>
+          </svg>
+          <p class="hf-video-placeholder__label">Upload Higgsfield Video — Prompt 005: The Translation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CRAFTSMANSHIP ===================== -->
+    <section class="craft-section section" aria-labelledby="craft-title">
+      <div class="container container--wide">
+        <div class="craft-section__intro" data-reveal="up">
+          <p class="section-eyebrow" style="color:var(--blue)">The Process</p>
+          <h2 class="t-h1 section-title--dark" id="craft-title">Five Steps from<br>Fleece to Masterpiece</h2>
+        </div>
+
+        <div class="craft-steps stagger-children">
+          <div class="craft-step">
+            <div class="craft-step__number">01</div>
+            <h3 class="craft-step__title">Carding &amp; Spinning</h3>
+            <p class="craft-step__body">Raw Eastern Cape mohair is hand-carded and spun by women in Eswatini homesteads, a process unchanged for decades.</p>
+          </div>
+          <div class="craft-step">
+            <div class="craft-step__number">02</div>
+            <h3 class="craft-step__title">Dyeing</h3>
+            <p class="craft-step__body">Mohair's natural lustre holds dye with extraordinary vibrancy — the secret behind the tapestries' signature light-catching quality.</p>
+          </div>
+          <div class="craft-step">
+            <div class="craft-step__number">03</div>
+            <h3 class="craft-step__title">Cartoon Development</h3>
+            <p class="craft-step__body">The artist's design is translated into a full-scale paper "cartoon" — the template from which all weaving is guided.</p>
+          </div>
+          <div class="craft-step">
+            <div class="craft-step__number">04</div>
+            <h3 class="craft-step__title">Charting the Colours</h3>
+            <p class="craft-step__body">Hundreds of individually numbered colour charts are developed over weeks, mapping every colour transition in the artwork.</p>
+          </div>
+          <div class="craft-step">
+            <div class="craft-step__number">05</div>
+            <h3 class="craft-step__title">Weaving</h3>
+            <p class="craft-step__body">Teams of up to six weavers work at vertical looms for one to six months, building the tapestry row by row with absolute precision.</p>
+          </div>
+        </div>
+
+        <div style="text-align:center" data-reveal="up">
+          <a href="/pages/craftsmanship" class="btn btn--primary" style="background:var(--black);color:var(--white)">The Full Process</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT CTA ===================== -->
+    <section class="contact-cta section" aria-labelledby="contact-title">
+      <div class="container" data-reveal="up">
+        <p class="contact-cta__eyebrow">Acquire or Commission</p>
+        <h2 class="contact-cta__title" id="contact-title">Begin a<br>Conversation.</h2>
+        <div class="contact-cta__actions">
+          <div class="btn-magnetic">
+            <a href="/pages/contact" class="btn btn--primary">Send an Enquiry</a>
+          </div>
+          <a href="https://wa.me/27826045388" class="btn btn--secondary" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <div class="contact-cta__details">
+          <div>
+            <p class="contact-cta__detail-label">Phone</p>
+            <a href="tel:+27826045388" class="contact-cta__detail-value">+27 (82) 604 5388</a>
+          </div>
+          <div>
+            <p class="contact-cta__detail-label">Email</p>
+            <a href="mailto:tina@stephenstapestrystudio.com" class="contact-cta__detail-value">tina@stephenstapestrystudio.com</a>
+          </div>
+          <div>
+            <p class="contact-cta__detail-label">Studio</p>
+            <p class="contact-cta__detail-value">Johannesburg, South Africa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container container--wide">
+      <div class="footer__inner">
+
+        <div class="footer__brand">
+          <div class="footer__logo">Stephens Tapestry Studio</div>
+          <p class="footer__tagline">Three generations of master weavers creating handwoven tapestries in collaboration with the world's leading artists. Est. 1962, Johannesburg &amp; Eswatini.</p>
+          <div class="footer__social">
+            <a href="https://instagram.com/stephenstapestry" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://facebook.com/stephenstapestry" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/stephens-tapestry-studio" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Studio</h3>
+          <nav class="footer__links" aria-label="Studio navigation">
+            <a href="/pages/our-story"     class="footer__link">Our Story</a>
+            <a href="/pages/artists"       class="footer__link">Artists</a>
+            <a href="/pages/craftsmanship" class="footer__link">Craftsmanship</a>
+            <a href="/pages/exhibitions"   class="footer__link">Exhibitions</a>
+          </nav>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Collection</h3>
+          <nav class="footer__links" aria-label="Collection navigation">
+            <a href="/collections/william-kentridge" class="footer__link">William Kentridge</a>
+            <a href="/collections/judith-mason"      class="footer__link">Judith Mason</a>
+            <a href="/collections/walter-battiss"    class="footer__link">Walter Battiss</a>
+            <a href="/collections/sam-nhlengethwa"   class="footer__link">Sam Nhlengethwa</a>
+            <a href="/collections/all"               class="footer__link">All Tapestries</a>
+          </nav>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Contact</h3>
+          <nav class="footer__links" aria-label="Contact navigation">
+            <a href="/pages/contact"                                  class="footer__link">Enquire</a>
+            <a href="tel:+27826045388"                                class="footer__link">+27 (82) 604 5388</a>
+            <a href="mailto:tina@stephenstapestrystudio.com"          class="footer__link">tina@stephenstapestrystudio.com</a>
+            <a href="https://wa.me/27826045388" target="_blank" rel="noopener" class="footer__link">WhatsApp</a>
+          </nav>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__legal">© <span id="year"></span> Stephens Tapestry Studio. All rights reserved.</p>
+        <div style="display:flex;gap:var(--space-6)">
+          <a href="/pages/privacy-policy" class="footer__legal" style="transition:color var(--transition-base)">Privacy Policy</a>
+          <a href="/pages/terms"          class="footer__legal" style="transition:color var(--transition-base)">Terms</a>
+          <a href="/pages/popia"          class="footer__legal" style="transition:color var(--transition-base)">POPIA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Auto year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+/* ============================================================
+   THEME.JS — STEPHENS TAPESTRY STUDIO
+   ============================================================ */
+'use strict';
+const utils={lerp(a,b,n){return(1-n)*a+n*b},clamp(v,min,max){return Math.min(Math.max(v,min),max)},debounce(fn,d){let id;return(...a)=>{clearTimeout(id);id=setTimeout(()=>fn(...a),d)}},throttle(fn,l){let t;return(...a)=>{if(!t){fn(...a);t=true;setTimeout(()=>t=false,l)}}},reducedMotion(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches},isMobile(){return window.innerWidth<=768}};
+class Loader{constructor(){this.el=document.querySelector('.loader');this.countEl=document.querySelector('.loader__count');this.duration=2000;this.init()}init(){if(!this.el)return;document.body.classList.add('is-loading');this.animateCount();setTimeout(()=>this.hide(),this.duration)}animateCount(){if(!this.countEl)return;let s=0;const t=setInterval(()=>{s+=1;this.countEl.textContent=s+'%';if(s>=100)clearInterval(t)},this.duration/100)}hide(){this.el.classList.add('is-hidden');document.body.classList.remove('is-loading');document.dispatchEvent(new Event('theme:loaded'))}}
+class Cursor{constructor(){if(utils.isMobile()||utils.reducedMotion())return;this.cursor=document.querySelector('.cursor');if(!this.cursor)return;this.dot=this.cursor.querySelector('.cursor__dot');this.ring=this.cursor.querySelector('.cursor__ring');this.mouse={x:-100,y:-100};this.ring_pos={x:-100,y:-100};this.bind();this.raf()}bind(){document.addEventListener('mousemove',(e)=>{this.mouse.x=e.clientX;this.mouse.y=e.clientY});document.querySelectorAll('a,button,[role="button"]').forEach(el=>{el.addEventListener('mouseenter',()=>this.cursor.classList.add('cursor--hover'));el.addEventListener('mouseleave',()=>this.cursor.classList.remove('cursor--hover'))})}raf(){this.dot.style.transform=`translate(${this.mouse.x}px,${this.mouse.y}px) translate(-50%,-50%)`;this.ring_pos.x=utils.lerp(this.ring_pos.x,this.mouse.x,0.12);this.ring_pos.y=utils.lerp(this.ring_pos.y,this.mouse.y,0.12);this.ring.style.transform=`translate(${this.ring_pos.x}px,${this.ring_pos.y}px) translate(-50%,-50%)`;requestAnimationFrame(()=>this.raf())}}
+class Navigation{constructor(){this.nav=document.querySelector('.nav');if(!this.nav)return;this.hamburger=this.nav.querySelector('.nav__hamburger');this.mobileMenu=document.querySelector('.nav-mobile');this.isOpen=false;this.bind()}bind(){window.addEventListener('scroll',utils.throttle(()=>this.onScroll(),50),{passive:true});if(this.hamburger&&this.mobileMenu){this.hamburger.addEventListener('click',()=>this.toggleMobile())}this.mobileMenu?.querySelectorAll('.nav-mobile__link').forEach(l=>l.addEventListener('click',()=>this.closeMobile()));document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&this.isOpen)this.closeMobile()})}onScroll(){window.scrollY>60?this.nav.classList.add('is-scrolled'):this.nav.classList.remove('is-scrolled')}toggleMobile(){this.isOpen?this.closeMobile():this.openMobile()}openMobile(){this.isOpen=true;this.mobileMenu.classList.add('is-open');document.body.style.overflow='hidden';this.hamburger.setAttribute('aria-expanded','true');this.mobileMenu.setAttribute('aria-hidden','false')}closeMobile(){this.isOpen=false;this.mobileMenu.classList.remove('is-open');document.body.style.overflow='';this.hamburger.setAttribute('aria-expanded','false');this.mobileMenu.setAttribute('aria-hidden','true')}}
+class ScrollReveal{constructor(){if(utils.reducedMotion()){document.querySelectorAll('[data-reveal],.reveal-line,.reveal-img,.stagger-children').forEach(el=>el.classList.add('is-visible'));return}const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});document.querySelectorAll('[data-reveal],.reveal-line,.reveal-img,.stagger-children').forEach(el=>io.observe(el))}}
+class CountUp{constructor(){this.elements=document.querySelectorAll('.count-up[data-count]');if(!this.elements.length)return;const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){this.animate(e.target);io.unobserve(e.target)}})},{threshold:.5});this.elements.forEach(el=>io.observe(el))}animate(el){const end=parseFloat(el.dataset.count),suffix=el.dataset.suffix||'',dur=2000,step=16,steps=dur/step;let cur=0;const t=setInterval(()=>{cur+=end/steps;if(cur>=end){cur=end;clearInterval(t)}el.textContent=(Number.isInteger(end)?Math.round(cur):cur.toFixed(1))+suffix},step)}}
+class MagneticButtons{constructor(){if(utils.reducedMotion()||utils.isMobile())return;document.querySelectorAll('.btn-magnetic').forEach(el=>this.init(el))}init(el){const btn=el.querySelector('.btn')||el;let b;el.addEventListener('mouseenter',()=>{b=el.getBoundingClientRect()});el.addEventListener('mousemove',(e)=>{if(!b)return;const x=e.clientX-b.left-b.width/2,y=e.clientY-b.top-b.height/2;btn.style.transform=`translate(${x*.35}px,${y*.35}px)`});el.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)';btn.style.transition='transform 600ms cubic-bezier(0.16,1,0.3,1)';setTimeout(()=>btn.style.transition='',600)})}}
+class Marquee{constructor(){if(utils.reducedMotion())return;document.querySelectorAll('.marquee__track').forEach(track=>{const p=track.closest('.marquee');if(!p)return;p.addEventListener('mouseenter',()=>track.style.animationPlayState='paused');p.addEventListener('mouseleave',()=>track.style.animationPlayState='running')})}}
+class Theme{constructor(){new Loader();document.addEventListener('DOMContentLoaded',()=>this.init())}init(){new Cursor();new Navigation();new ScrollReveal();new CountUp();new MagneticButtons();new Marquee();console.log('%cStephens Tapestry Studio — Loaded','color:#1E5EFF;font-family:Georgia,serif;font-size:14px;')}}
+new Theme();
+  </script>
+
+  <script>
+/* ============================================================
+   ANIMATIONS.JS — STEPHENS TAPESTRY STUDIO
+   ============================================================ */
+'use strict';
+class ThreadParticles{constructor(s='.hero__particles'){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;this.canvas=document.querySelector(s);if(!this.canvas)return;this.ctx=this.canvas.getContext('2d');this.threads=[];this.resize();this.create();this.raf();window.addEventListener('resize',()=>{this.resize();this.create()})}resize(){this.canvas.width=this.canvas.offsetWidth;this.canvas.height=this.canvas.offsetHeight}create(){this.threads=[];const count=Math.floor(this.canvas.width/80);for(let i=0;i<count;i++)this.threads.push({x:Math.random()*this.canvas.width,y:Math.random()*this.canvas.height,length:60+Math.random()*100,opacity:.03+Math.random()*.07,speed:.2+Math.random()*.4,angle:(Math.random()-.5)*.3,width:.5+Math.random()*1,color:Math.random()>.7?'#1E5EFF':'#FFFFFF'})}raf(){this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);this.threads.forEach(t=>{t.y+=t.speed;if(t.y>this.canvas.height+t.length){t.y=-t.length;t.x=Math.random()*this.canvas.width}this.ctx.save();this.ctx.globalAlpha=t.opacity;this.ctx.strokeStyle=t.color;this.ctx.lineWidth=t.width;this.ctx.beginPath();this.ctx.moveTo(t.x,t.y);this.ctx.lineTo(t.x+Math.sin(t.angle)*t.length,t.y+Math.cos(t.angle)*t.length);this.ctx.stroke();this.ctx.restore()});requestAnimationFrame(()=>this.raf())}}
+class HeroTitleScale{constructor(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(window.innerWidth<=768)return;this.title=document.querySelector('.hero__title');if(!this.title)return;window.addEventListener('scroll',()=>{const s=window.scrollY,max=window.innerHeight*.6,p=Math.min(s/max,1);this.title.style.transform=`scale(${1-p*.15})`;this.title.style.opacity=1-p*.6},{passive:true})}}
+class ImageTilt{constructor(s='[data-tilt]'){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(window.innerWidth<=768)return;document.querySelectorAll(s).forEach(el=>this.init(el))}init(el){const str=parseFloat(el.dataset.tiltStrength)||8;el.addEventListener('mousemove',(e)=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(800px) rotateX(${y*-str}deg) rotateY(${x*str}deg) scale3d(1.02,1.02,1.02)`;el.style.transition='transform 100ms linear'});el.addEventListener('mouseleave',()=>{el.style.transform='perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';el.style.transition='transform 600ms cubic-bezier(0.16,1,0.3,1)'})}}
+document.addEventListener('DOMContentLoaded',()=>{new ThreadParticles('.hero__particles');new HeroTitleScale();new ImageTilt('[data-tilt]')});
+  </script>
+
+</body>
+</html>
